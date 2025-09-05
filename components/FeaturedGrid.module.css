@@ -1,0 +1,420 @@
+
+
+/* ============================================================================
+   Variables CSS locales para FeaturedGrid
+   Permiten personalizar colores, espaciados, radios y tipografía.
+============================================================================ */
+.featuredGrid {
+  --fg-bg: #f8fafc; /* Fondo principal */
+  --fg-text: #1f2937; /* Color de texto */
+  --fg-accent: #3b82f6; /* Color principal/acento */
+  --fg-accent-hover: #2563eb; /* Color acento hover */
+  --fg-accent-active: #1d4ed8; /* Color acento activo */
+  --fg-border: #e5e7eb; /* Color de borde */
+  --fg-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra base */
+  --fg-shadow-hover: 0 10px 25px rgba(59, 130, 246, 0.15); /* Sombra hover */
+  --fg-shadow-button: 0 4px 12px rgba(59, 130, 246, 0.25); /* Sombra botón */
+  
+  --fg-spacing-xs: 0.5rem;
+  --fg-spacing-sm: 0.75rem;
+  --fg-spacing-md: 1rem;
+  --fg-spacing-lg: 1.5rem;
+  --fg-spacing-xl: 2rem;
+  --fg-spacing-xxl: 3rem;
+  
+  --fg-radius-sm: 0.375rem;
+  --fg-radius-md: 0.5rem;
+  --fg-radius-lg: 0.75rem;
+  --fg-radius-xl: 1rem;
+  
+  --fg-text-xs: 0.75rem;
+  --fg-text-sm: 0.875rem;
+  --fg-text-md: 1rem;
+  --fg-text-lg: 1.125rem;
+  --fg-text-xl: 1.25rem;
+  --fg-text-xxl: 1.5rem;
+  --fg-text-xxxl: 1.875rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Estructura principal del bloque destacado
+----------------------------------------------------------------------------- */
+.section {
+  background: var(--fg-bg, var(--color-bg-secondary, #f8fafc)); /* Fondo */
+  padding: var(--fg-spacing-xxl, var(--spacing-xxl, 3rem)) 
+           var(--fg-spacing-xl, var(--spacing-xl, 2rem)); /* Espaciado */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Línea decorativa superior */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--fg-border, #e5e7eb) 50%, 
+    transparent 100%);
+}
+
+
+/* Contenedor interno centrado */
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Contenedor del ProductGrid - NUEVO ESTILO
+----------------------------------------------------------------------------- */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grid responsivo */
+  gap: var(--fg-spacing-lg);
+  margin: 0 auto;
+}
+
+/* Desktop: muestra máximo 4 columnas (8 productos en 2 filas) */
+.gridContainer {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+
+/* -----------------------------------------------------------------------------
+   Título y tipografía
+----------------------------------------------------------------------------- */
+.title {
+  font-size: var(--fg-text-xxxl, var(--font-size-xxxl, 1.875rem)); /* Tamaño grande */
+  font-weight: 800;
+  color: var(--fg-text, var(--color-text-primary, #1f2937));
+  margin-bottom: var(--fg-spacing-xl, var(--spacing-xl, 2rem));
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  position: relative;
+  display: inline-block;
+}
+
+/* Línea decorativa bajo el título */
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--fg-accent, var(--color-primary, #3b82f6));
+  border-radius: 3px;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Botón "Ver más" - Profesional con micro-interacciones
+----------------------------------------------------------------------------- */
+.btnMore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fg-spacing-xs, var(--spacing-xs, 0.5rem));
+  margin-top: var(--fg-spacing-xl, var(--spacing-xl, 2rem));
+  padding: var(--fg-spacing-md, var(--spacing-md, 1rem)) 
+           var(--fg-spacing-xl, var(--spacing-xl, 2rem));
+  border-radius: var(--fg-radius-lg, var(--radius-lg, 0.75rem));
+  background: var(--fg-accent, var(--color-primary, #3b82f6));
+  color: white;
+  font-weight: 600;
+  font-size: var(--fg-text-md, var(--font-size-md, 1rem));
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--fg-shadow, 0 1px 3px rgba(0, 0, 0, 0.1));
+}
+
+/* Efecto hover completo */
+.btnMore:hover {
+  background: var(--fg-accent-hover, var(--color-primary-dark, #2563eb));
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--fg-shadow-hover, 0 10px 25px rgba(59, 130, 246, 0.15));
+}
+
+/* Efecto de ripple al hacer click */
+.btnMore::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 1%, transparent 1%) center/15000%;
+  opacity: 0;
+  transition: opacity 0.5s, background-size 0.5s;
+}
+
+.btnMore:active::after {
+  background-size: 100%;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Estados de focus para accesibilidad */
+.btnMore:focus {
+  outline: 2px solid var(--fg-accent, var(--color-primary, #3b82f6));
+  outline-offset: 2px;
+  border-color: white;
+}
+
+/* Icono del botón (opcional) */
+.btnMore::before {
+  content: '→';
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.btnMore:hover::before {
+  transform: translateX(2px);
+}
+
+
+/* -----------------------------------------------------------------------------
+   Estados de carga y disabled
+----------------------------------------------------------------------------- */
+.btnMore.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.btnMore.loading::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Responsive Design - Mobile First Approach
+   Adaptación de columnas, paddings y tamaños para cada breakpoint
+----------------------------------------------------------------------------- */
+
+/* Tablet (1024px para abajo) */
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas → 6 productos en 2 filas */
+    gap: var(--fg-spacing-md);
+  }
+}
+
+/* Tablet (768px para abajo) */
+@media (max-width: 768px) {
+  .section {
+    padding: var(--fg-spacing-xl, var(--spacing-xl, 2rem)) 
+             var(--fg-spacing-lg, var(--spacing-lg, 1.5rem));
+  }
+  
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas → 6 productos en 3 filas */
+    gap: var(--fg-spacing-md);
+  }
+  
+  .title {
+    font-size: var(--fg-text-xxl, var(--font-size-xxl, 1.5rem));
+    margin-bottom: var(--fg-spacing-lg, var(--spacing-lg, 1.5rem));
+  }
+  
+  .title::after {
+    width: 40px;
+    bottom: -6px;
+  }
+  
+  .btnMore {
+    padding: var(--fg-spacing-sm, var(--spacing-sm, 0.75rem)) 
+             var(--fg-spacing-lg, var(--spacing-lg, 1.5rem));
+    font-size: var(--fg-text-sm, var(--font-size-sm, 0.875rem));
+  }
+}
+
+/* Mobile (480px para abajo) */
+@media (max-width: 480px) {
+  .section {
+    padding: var(--fg-spacing-lg, var(--spacing-lg, 1.5rem)) 
+             var(--fg-spacing-md, var(--spacing-md, 1rem));
+  }
+  
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas → 6 productos en 3 filas */
+    gap: var(--fg-spacing-sm);
+  }
+  
+  .title {
+    font-size: var(--fg-text-xl, var(--font-size-xl, 1.25rem));
+    margin-bottom: var(--fg-spacing-md, var(--spacing-md, 1rem));
+  }
+  
+  .title::after {
+    width: 30px;
+    height: 2px;
+    bottom: -4px;
+  }
+  
+  .btnMore {
+    width: 100%;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Mobile pequeño (360px para abajo) */
+@media (max-width: 360px) {
+  .section {
+    padding: var(--fg-spacing-md, var(--spacing-md, 1rem)) 
+             var(--fg-spacing-sm, var(--spacing-sm, 0.75rem));
+  }
+  
+  .gridContainer {
+    grid-template-columns: 1fr; /* 1 columna → 6 productos en 6 filas */
+    gap: var(--fg-spacing-sm);
+  }
+  
+  .title {
+    font-size: var(--fg-text-lg, var(--font-size-lg, 1.125rem));
+  }
+  
+  .btnMore {
+    padding: var(--fg-spacing-sm, var(--spacing-sm, 0.75rem)) 
+             var(--fg-spacing-md, var(--spacing-md, 1rem));
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Modo oscuro automático
+   Adapta colores y sombras para dark mode
+----------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  .featuredGrid {
+    --fg-bg: #111827;
+    --fg-text: #f9fafb;
+    --fg-border: #374151;
+    --fg-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --fg-shadow-hover: 0 10px 25px rgba(59, 130, 246, 0.2);
+  }
+  
+  .section::before {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      var(--fg-border, #374151) 50%, 
+      transparent 100%);
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Animaciones y transiciones suaves
+   Fade in y slide in para sección y título
+----------------------------------------------------------------------------- */
+.section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  animation: slideInFromLeft 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Estados de preferencias de usuario
+   Reduce animaciones si el usuario lo prefiere
+----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .section,
+  .title,
+  .btnMore,
+  .btnMore::before {
+    animation: none;
+    transition: none;
+  }
+  
+  .btnMore:hover {
+    transform: none;
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Mejoras de rendimiento
+   Contain y will-change para optimizar el renderizado
+----------------------------------------------------------------------------- */
+.section {
+  contain: layout style paint;
+}
+
+.btnMore {
+  will-change: transform, box-shadow, background;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Soporte para navegadores antiguos
+   Ajusta el grid y los márgenes si no soporta gap
+----------------------------------------------------------------------------- */
+@supports not (gap: 0.5rem) {
+  .gridContainer {
+    gap: 0;
+    margin: -0.75rem;
+  }
+  
+  .gridContainer > * {
+    margin: 0.75rem;
+  }
+  
+  .btnMore {
+    margin-right: var(--fg-spacing-xs, var(--spacing-xs, 0.5rem));
+  }
+  
+  .btnMore::before {
+    margin-right: var(--fg-spacing-xs, var(--spacing-xs, 0.5rem));
+  }
+}

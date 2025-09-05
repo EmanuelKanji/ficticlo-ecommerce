@@ -1,0 +1,53 @@
+
+
+
+/* Estilos globales para el body en modo claro */
+body {
+  background: #f8fafc; /* Fondo claro */
+  color: #222;         /* Texto oscuro */
+}
+
+
+/* Bordes blancos en modo oscuro para elementos con clase .bordered y <hr> */
+body.dark hr,
+body.dark .bordered {
+  border-color: #fff !important;
+}
+
+
+/* Estilos globales para el body en modo oscuro (usando clase en <html>) */
+html[class~="dark"] body {
+  background: #111; /* Fondo oscuro */
+  color: #fff;      /* Texto claro */
+}
+
+
+/* Sidebar en modo oscuro */
+html[class~="dark"] .sidebar {
+  background: #181818;
+  border-right: 1px solid #fff;
+}
+/* Header en modo oscuro */
+html[class~="dark"] .header {
+  background: #181818;
+  border-bottom: 1px solid #fff;
+}
+/* Área principal en modo oscuro */
+html[class~="dark"] .mainArea {
+  background: #111;
+  color: #fff;
+}
+/* Paneles en modo oscuro */
+html[class~="dark"] .panel {
+  background: #181818;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/* Footer en modo oscuro */
+html[class~="dark"] .footer {
+  background: #181818;
+  color: #fff;
+  border-top: 1px solid #fff;
+}

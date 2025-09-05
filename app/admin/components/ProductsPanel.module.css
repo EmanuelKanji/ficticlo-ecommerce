@@ -1,0 +1,402 @@
+/* Tabla de productos agregados */
+
+/* Contenedor de la tabla, scroll horizontal si es necesario */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 24px;
+}
+
+/* Tabla principal de productos, fondo blanco y bordes redondeados */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #0001;
+  font-size: 15px;
+}
+
+/* Celdas de la tabla, padding y borde inferior */
+.table th, .table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+/* Encabezado de la tabla, fondo y texto destacado */
+.table th {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Última fila sin borde inferior */
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Imagen de producto en la tabla */
+.productImage {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Indicador de bajo stock */
+.lowStock {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 13px;
+  background: #fee2e2;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin-left: 8px;
+}
+
+/* Grupo de formulario, etiquetas arriba de los inputs */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 8px;
+}
+
+/* Etiqueta de campo de formulario */
+.label {
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+/* ProductsPanel.module.css
+Estilo empresarial, colores y bordes como OrdersPanel y OffersPanel */
+/*
+ * Estilos para el panel principal de productos.
+ * - Define el fondo, color de texto, bordes redondeados y sombra.
+ * - Aplica un borde sutil y espaciado interno/externo.
+ */
+.panel {
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0001;
+    border: 1px solid #e5e7eb;
+    padding: 32px 24px;
+    margin-bottom: 32px;
+}
+
+/*
+ * Título del panel.
+ * - Establece tamaño, peso y color de fuente.
+ * - Añade margen inferior para separación visual.
+ */
+.title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 24px;
+}
+
+/*
+ * Contenedor de pestañas.
+ * - Usa flexbox para distribuir los botones de pestaña.
+ * - Añade espacio entre ellos y margen inferior.
+ */
+.tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/*
+ * Botón de pestaña.
+ * - Estilo oscuro por defecto, bordes redondeados arriba.
+ * - Transición suave en hover.
+ */
+.tabButton {
+    min-width: 120px;
+    font-weight: 500;
+    background: #1e293b;
+    color: #fff;
+    border: 1px solid #334155;
+    border-radius: 6px 6px 0 0;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+/*
+ * Botón de pestaña activa.
+ * - Fondo claro, texto oscuro, borde inferior destacado.
+ */
+.tabButtonActive {
+    background: #fff;
+    color: #1e293b;
+    border-bottom: 2px solid #1e293b;
+    font-weight: 700;
+}
+
+/*
+ * Lista de productos.
+ * - Elimina estilos por defecto y añade margen inferior.
+ */
+.list {
+    margin-bottom: 24px;
+    list-style: none;
+    padding: 0;
+}
+
+/*
+ * Elemento de la lista de productos.
+ * - Distribuye contenido con flexbox y separa con borde.
+ */
+.listItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/*
+ * El último elemento no tiene borde inferior.
+ */
+.listItem:last-child {
+    border-bottom: none;
+}
+
+/*
+ * Nombre del producto.
+ * - Resalta el nombre con peso y color.
+ */
+.productName {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+/*
+ * Botón de acción.
+ * - Estilo oscuro, bordes redondeados, transición en hover.
+ */
+.button {
+    background: #1e293b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/*
+ * Botón en hover.
+ * - Cambia el fondo a un tono más claro.
+ */
+.button:hover {
+    background: #334155;
+}
+
+/*
+ * Formulario de producto.
+ * - Distribuye los campos con flexbox y permite envoltura.
+ */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    align-items: stretch;
+}
+
+/*
+ * Grupo de campos del formulario.
+ * - Organiza los inputs en columna y define ancho mínimo.
+ */
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    gap: 12px;
+}
+
+/*
+ * Campo de entrada.
+ * - Espaciado interno, borde y tamaño de fuente.
+ */
+.input {
+  padding: 10px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #f8fafc;
+  color: #1e293b;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px #0001;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px #6366f133;
+}
+
+.select {
+  padding: 10px 14px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #f8fafc;
+  color: #1e293b;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px #6366f133;
+}
+
+.label {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+  font-size: 15px;
+}
+
+/*
+ * Etiqueta de campo.
+ * - Tamaño y peso de fuente, color y margen inferior.
+ */
+.label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/*
+ * Mensaje de error.
+ * - Color rojo y margen superior.
+ */
+.error {
+    color: #dc2626;
+    margin-top: 8px;
+}
+
+/*
+ * Mensaje de éxito.
+ * - Color verde y margen superior.
+ */
+.success {
+    color: #2e7d32;
+    margin-top: 8px;
+}
+
+/*
+ * Información del producto.
+ * - Distribuye elementos con flexbox y espacio entre ellos.
+ */
+.productInfo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+/*
+ * Detalles del producto.
+ * - Flexbox, mayor espacio entre elementos.
+ */
+.productDetails {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex: 2;
+}
+
+/*
+ * Información de stock.
+ * - Agrupa elementos relacionados con el stock.
+ */
+.stockInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/*
+ * Stock bajo.
+ * - Color rojo y peso de fuente alto.
+ */
+.stockLow {
+    color: #dc2626;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/*
+ * Stock medio.
+ * - Color naranja y peso medio.
+ */
+.stockMedium {
+    color: #d97706;
+    font-weight: 500;
+}
+
+/*
+ * Stock alto.
+ * - Color verde.
+ */
+.stockHigh {
+    color: #2e7d32;
+}
+
+/*
+ * Acciones del producto.
+ * - Agrupa botones de acción con espacio entre ellos.
+ */
+.productActions {
+    display: flex;
+    gap: 8px;
+}
+
+/*
+ * Icono.
+ * - Margen derecho para separación.
+ */
+.icon {
+    margin-right: 4px;
+}
+
+/*
+ * Media query para pantallas pequeñas.
+ * - Ajusta la dirección y alineación de los formularios y detalles para mejor visualización en móvil.
+ */
+@media (max-width: 768px) {
+    .form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .formGroup {
+        min-width: auto;
+    }
+    .productDetails {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .productInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

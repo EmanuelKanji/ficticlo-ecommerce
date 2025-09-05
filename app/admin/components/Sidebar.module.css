@@ -1,0 +1,111 @@
+/* Estilos para el Sidebar del admin */
+
+/* Sidebar fijo a la izquierda, fondo oscuro y sombra */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background: #1e293b;
+  color: #fff;
+  box-shadow: 2px 0 8px #0002;
+  z-index: 30;
+}
+
+/* Título del menú lateral, fondo y texto destacado */
+.title {
+    background: #1e293b;
+    color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid #334155;
+}
+
+/* Contenedor de botones del menú, columna y espacio superior */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 80px;
+}
+
+/* Botón de menú, alineado y con transición visual */
+.menuButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.7rem 1.2rem;
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-left: 4px solid transparent;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s, border-left 0.2s, font-weight 0.2s;
+}
+
+/* Botón activo, fondo y borde izquierdo resaltado */
+.menuButtonActive {
+  background: #334155;
+  border-left: 4px solid #4f46e5;
+  font-weight: 700;
+}
+
+/* Responsive: sidebar ocupa toda la pantalla en móvil */
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        top: 64px; /* altura del header */
+        left: 0;
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        background: #1e293b;
+        box-shadow: 0 2px 8px #0002;
+        border-top: 1px solid #334155;
+        display: none; /* se muestra al apretar la hamburguesa */
+    }
+
+    .sidebar.open {
+        display: flex;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .menu {
+        flex-direction: row;
+        gap: 0;
+        padding: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+  .menuButton {
+    padding: 0.5rem 0.7rem;
+    min-width: 60px;
+    max-width: 90px;
+    font-size: 14px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    transition: background 0.2s, border-bottom 0.2s, font-weight 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+    .menuButtonActive {
+        background: #334155;
+        border-bottom: 4px solid #4f46e5;
+        font-weight: 700;
+    }
+}

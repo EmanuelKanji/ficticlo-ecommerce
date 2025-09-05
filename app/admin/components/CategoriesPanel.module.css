@@ -1,0 +1,89 @@
+/* CategoriesPanel.module.css
+   Estilo empresarial, colores y bordes como Sidebar/Header */
+
+/* Panel principal de categorías
+   Fondo blanco, bordes redondeados y sombra para resaltar el panel */
+.panel {
+  background: #fff;
+  color: #222;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+  border: 1px solid #e5e7eb;
+  padding: 32px 24px;
+  margin-bottom: 32px;
+}
+
+/* Título del panel de categorías
+   Texto grande y destacado */
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 24px;
+}
+
+/* Lista de categorías
+   Elimina los estilos por defecto y agrega espacio inferior */
+.list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+/* Elemento individual de la lista
+   Alinea el nombre y el botón, separa con borde inferior */
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* El último elemento no tiene borde inferior */
+.listItem:last-child {
+  border-bottom: none;
+}
+
+/* Nombre de la categoría
+   Texto destacado y color corporativo */
+.categoryName {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* Botón de acción (agregar/eliminar)
+   Estilo corporativo, fondo oscuro y bordes redondeados */
+.button {
+  background: #1e293b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Efecto hover para el botón */
+.button:hover {
+  background: #334155;
+}
+
+/* Formulario para agregar categoría
+   Alinea los campos y el botón en una fila */
+.form {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Input de texto para nueva categoría
+   Estilo simple y corporativo */
+.input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 15px;
+}

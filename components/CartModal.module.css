@@ -1,0 +1,276 @@
+
+/* =============================================================================
+  CART MODAL - ESTILO PROFESIONAL Y SUTIL
+  Este archivo define los estilos para el modal del carrito de compras.
+  Incluye capa oscura, panel lateral, animaciones, modo oscuro y responsividad.
+============================================================================= */
+
+
+/* Capa oscura que cubre toda la pantalla cuando el modal está abierto */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, .45); /* Fondo semitransparente */
+  backdrop-filter: blur(2px);         /* Difumina el fondo */
+  -webkit-backdrop-filter: blur(2px); /* Compatibilidad Safari */
+  z-index: 10000;                    /* Muy por encima del contenido */
+}
+
+
+/* Panel lateral del modal (carrito) */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh; /* Altura total de la ventana */
+  width: min(380px, 100vw); /* Máximo 380px, responsivo */
+  background: #fff;
+  border-left: 1px solid #e5e7eb;
+  box-shadow: -12px 0 30px rgba(0,0,0,.15); /* Sombra lateral */
+  z-index: 10001;
+  display: grid;
+  grid-template-rows: auto 1fr; /* Cabecera y contenido */
+  animation: slideIn .2s ease-out both; /* Animación de entrada */
+}
+
+
+/* Cabecera del modal (título y botón cerrar) */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid #eef0f3;
+}
+
+
+/* Título del modal */
+.title {
+  margin: 0;
+  font-size: .95rem;              /* Más pequeño que h1 */
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: #111827;
+}
+
+
+/* Botón de cerrar el modal (estilo sutil) */
+.iconButton {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 5px;
+  border-radius: 6px;
+  color: #111827;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease, opacity .2s ease;
+}
+.iconButton:hover { background: #f3f4f6; }
+.iconButton:active { opacity: .8; }
+
+
+/* Contenido scrollable del modal */
+.content {
+  overflow-y: auto;
+  padding: 10px 14px 16px;
+  display: grid;
+  gap: 12px;
+}
+
+
+/* Estado vacío del carrito */
+.empty {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  padding: 26px 0;
+  color: #4b5563;
+  text-align: center;
+}
+.emptyIcon { font-size: 36px; }
+.emptyText { margin: 0; font-size: .9rem; font-weight: 500; }
+
+
+/* Enlace sutil para acciones secundarias */
+.linkGhost {
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  font-weight: 600;
+  font-size: .85rem;
+  transition: all .2s ease;
+}
+.linkGhost:hover { border-color: #3b82f6; color: #2563eb; }
+
+
+/* Contenedor de los items del carrito */
+.items { display: grid; gap: 8px; }
+
+
+/* Item individual del carrito */
+.item {
+  display: grid;
+  grid-template-columns: 70px 1fr auto; /* Imagen, info, acciones */
+  gap: 10px;
+  border: 1px solid #eef0f3;
+  border-radius: 10px;
+  padding: 8px;
+  align-items: center;
+  background: #fff;
+}
+
+
+/* Imagen del producto en el item */
+.itemImage {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f7f7f9;
+}
+.image { object-fit: cover; }
+
+
+/* Información del producto en el item */
+.itemInfo { display: grid; gap: 3px; align-content: start; }
+.itemName { margin: 0; font-weight: 600; font-size: .9rem; }
+.itemPrice { margin: 0; color: #6b7280; font-size: .8rem; }
+
+
+/* Selector de cantidad en el item */
+.quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.quantityLabel { font-size: .75rem; color: #6b7280; }
+.quantityInput {
+  width: 48px;
+  padding: 4px 6px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: .8rem;
+  background: #fff;
+}
+
+
+/* Acciones por item (eliminar, total) */
+.itemActions {
+  display: grid;
+  gap: 4px;
+  align-items: center;
+  justify-items: end;
+}
+.itemTotal { font-weight: 700; font-size: .9rem; }
+
+
+/* Enlace/acción de eliminar item (estilo peligro) */
+.linkDanger {
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #ef4444;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease;
+}
+.linkDanger:hover { background: #fee2e2; border-color: #fecaca; }
+
+
+/* Resumen de la compra (total, botones) */
+.summary {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding-top: 6px;
+  border-top: 1px solid #eef0f3;
+  display: grid;
+  gap: 8px;
+}
+
+
+/* Fila de resumen (total, subtotales) */
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: .9rem;
+}
+
+
+/* Contenedor de botones de acción en el resumen */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+
+/* Botón principal (checkout, acción principal) */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 14px;
+  background: #2563eb;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: .85rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .2s ease, box-shadow .2s ease;
+}
+.btnPrimary:hover { background: #1d4ed8; }
+.btnPrimary:active { opacity: .9; }
+
+
+/* Botón secundario (acción alternativa) */
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 12px;
+  background: #fff;
+  color: #111827;
+  font-weight: 600;
+  font-size: .85rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.btnGhost:hover { border-color: #9ca3af; background: #f9fafb; }
+
+
+/* Animación de entrada del modal */
+@keyframes slideIn {
+  from { transform: translateX(8px); opacity: .98; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+
+/* Modo oscuro: adapta colores y bordes para dark mode */
+@media (prefers-color-scheme: dark) {
+  .modal { background: #0b0b0c; border-left-color: rgba(255,255,255,.12); }
+  .header { border-bottom-color: rgba(255,255,255,.12); }
+  .title { color: #f9fafb; }
+  .content { color: #e5e7eb; }
+  .item { border-color: rgba(255,255,255,.12); background: transparent; }
+  .quantityInput { background: transparent; color: #f9fafb; border-color: rgba(255,255,255,.2); }
+  .linkGhost { color: #e5e7eb; border-color: rgba(255,255,255,.22); }
+  .linkGhost:hover { border-color: #3b82f6; color: #3b82f6; }
+  .summary { background: #0b0b0c; border-top-color: rgba(255,255,255,.12); }
+  .btnPrimary { background: #2563eb; }
+  .btnGhost { background: transparent; color: #e5e7eb; border-color: rgba(255,255,255,.22); }
+  .btnGhost:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.04); }
+}

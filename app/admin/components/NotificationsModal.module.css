@@ -1,0 +1,195 @@
+/* NotificationsModal.module.css */
+
+/* Overlay con efecto de fondo difuminado y animación de entrada */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Modal principal, fondo blanco, sombra y animación de entrada */
+.modal {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease-out forwards;
+  position: relative;
+}
+
+/* Cabecera del modal, título destacado y borde inferior */
+.modal h2 {
+  margin: 0;
+  padding: 20px 24px 16px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Botón de cierre, diseño moderno y posición absoluta */
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f1f5f9;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #64748b;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: #e2e8f0;
+  color: #475569;
+  transform: rotate(90deg);
+}
+
+/* Lista de notificaciones */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+/* Elementos de la lista */
+.list li {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list li:hover {
+  background-color: #f8fafc;
+}
+
+/* Indicador de tipo de notificación */
+.list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+/* Estilos para diferentes tipos de notificación */
+.stock::before {
+  background-color: #ef4444; /* Rojo para stock */
+}
+
+.purchase::before {
+  background-color: #10b981; /* Verde para compras */
+}
+
+/* Mensaje de notificación */
+.list li span:first-child {
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+/* Fecha de notificación */
+.date {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  align-self: flex-start;
+}
+
+/* Mensaje cuando no hay notificaciones */
+.modal > p {
+  padding: 24px;
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Scrollbar personalizado para la lista */
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Responsive para dispositivos móviles */
+@media (max-width: 640px) {
+  .modal {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .list li {
+    padding: 14px 20px;
+  }
+  
+  .modal h2 {
+    padding: 16px 20px 12px;
+  }
+}

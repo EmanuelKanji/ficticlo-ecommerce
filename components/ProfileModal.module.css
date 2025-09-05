@@ -1,0 +1,242 @@
+/* Overlay sutil */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal elegante y minimalista */
+.modal {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
+  padding: 0;
+  width: 90%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  animation: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #e2e8f0;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Cabecera minimalista */
+.modalHeader {
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.close {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.close:hover {
+  background: #f8fafc;
+  color: #475569;
+}
+
+/* Contenido del modal */
+.modalContent {
+  padding: 28px;
+  overflow-y: auto;
+  max-height: calc(90vh - 120px);
+}
+
+/* Formulario minimalista */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.input {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  color: #1f2937;
+  font-family: inherit;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+/* Botones sutiles */
+.modalFooter {
+  padding: 20px 28px 28px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #fafbfc;
+  border-top: 1px solid #f1f5f9;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid;
+  font-family: inherit;
+}
+
+.buttonPrimary {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
+.buttonPrimary:hover:not(:disabled) {
+  background: #4338ca;
+  border-color: #4338ca;
+}
+
+.buttonSecondary {
+  background: #ffffff;
+  color: #4b5563;
+  border-color: #d1d5db;
+}
+
+.buttonSecondary:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.passwordButton {
+  background: #ffffff;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  margin-top: 8px;
+}
+
+.passwordButton:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+/* Mensajes de estado sutiles */
+.error {
+  color: #dc2626;
+  background: #fef2f2;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  text-align: center;
+  border: 1px solid #fecaca;
+}
+
+.success {
+  color: #059669;
+  background: #f0fdf4;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  text-align: center;
+  border: 1px solid #a7f3d0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal {
+    max-width: 95%;
+  }
+  
+  .modalHeader {
+    padding: 20px 20px 14px;
+  }
+  
+  .modalContent {
+    padding: 20px;
+  }
+  
+  .modalFooter {
+    padding: 16px 20px 20px;
+    flex-direction: column;
+  }
+  
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+}

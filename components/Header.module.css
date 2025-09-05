@@ -1,0 +1,593 @@
+
+/* =============================================================================
+  Header.module.css
+  Estilos para el encabezado principal, navegación y búsqueda
+============================================================================ */
+
+
+/* -----------------------------------------------------------------------------
+   Contenedor principal del header (barra superior fija)
+----------------------------------------------------------------------------- */
+.header {
+  position: sticky; /* Se mantiene visible arriba al hacer scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95); /* Fondo semitransparente */
+  backdrop-filter: blur(12px); /* Desenfoque de fondo */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea inferior */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Sombra sutil */
+  transition: all 300ms ease;
+}
+
+
+/* Header con scroll: sombra y fondo más opaco */
+.headerScrolled {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+
+/* Contenedores internos para desktop y móvil */
+.innerDesktop, .innerMobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 72px;
+}
+
+.innerMobile {
+  padding: 0 1rem;
+}
+
+
+/* Logo/Brand principal con gradiente y animación */
+.brand {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2563eb;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #2563eb 0%, #7e22ce 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 300ms ease;
+}
+
+.brand::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #2563eb, #7e22ce);
+  transition: width 300ms ease;
+}
+
+.brand:hover::after {
+  width: 100%;
+}
+
+/* Logo/Brand para móvil */
+.mobileBrand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Búsqueda desktop: barra de búsqueda y estados
+----------------------------------------------------------------------------- */
+.searchForm {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 420px;
+  height: 44px;
+  background: #f3f4f6;
+  border-radius: 0.75rem;
+  padding: 0 1rem;
+  transition: all 300ms ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid transparent;
+}
+
+.searchFormFocused {
+  background: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-color: #3b82f6;
+  transform: translateY(-1px);
+}
+
+.searchIcon {
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  transition: color 150ms ease;
+}
+
+.searchFormFocused .searchIcon {
+  color: #2563eb;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #1f2937;
+  outline: none;
+  height: 100%;
+}
+
+.searchInput::placeholder {
+  color: #6b7280;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Navegación derecha: enlaces y animaciones
+----------------------------------------------------------------------------- */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 150ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navlink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+  transition: left 0.7s ease;
+}
+
+.navlink:hover::before {
+  left: 100%;
+}
+
+.navlink:hover {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.05);
+}
+
+
+/* -----------------------------------------------------------------------------
+   Iconos: carrito, usuario, menú y cerrar
+----------------------------------------------------------------------------- */
+.cartIcon, .userIcon, .menuIcon, .closeIcon {
+  transition: all 150ms ease;
+}
+
+.cartIcon {
+  color: #374151;
+}
+
+.userIcon {
+  color: #374151;
+}
+
+.menuIcon, .closeIcon {
+  color: #374151;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Header móvil: estructura y menú hamburguesa
+----------------------------------------------------------------------------- */
+.mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.mobileMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.mobileMenu:hover {
+  background: #f3f4f6;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Búsqueda móvil: barra, botón e input animado
+----------------------------------------------------------------------------- */
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 150ms ease;
+  position: relative;
+}
+
+.searchIconButton:hover {
+  background: #f3f4f6;
+}
+
+.mobileSearchInput {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 300px;
+  background: #f3f4f6; /* Color de fondo más visible */
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 1rem;
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  transform-origin: top right;
+  transition: opacity 300ms ease, transform 300ms ease;
+  z-index: 10;
+  border: 1px solid #e5e7eb;
+  pointer-events: none;
+}
+
+.mobileSearchInput.active {
+  opacity: 1;
+  transform: translateY(8px) scale(1);
+  pointer-events: all;
+  background: #fff; /* Fondo blanco al estar activo */
+}
+
+.mobileSearchInput .searchInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.mobileSearchInput .searchInput:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* -----------------------------------------------------------------------------
+   Carrito móvil y badge animado
+----------------------------------------------------------------------------- */
+.mobileCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 150ms ease;
+}
+
+.mobileCart:hover {
+  background: #f3f4f6;
+}
+
+.mobileCartBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: linear-gradient(135deg, #f59e0b, #f97316); /* Gradiente naranja */
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  animation: pulse 2s infinite; /* Animación de pulso */
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Panel móvil: menú lateral, animaciones y overlay
+----------------------------------------------------------------------------- */
+.mobilePanel {
+  position: fixed;
+  top: 72px; /* igual que la altura del header en mobile */
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 101;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  width: 100vw;
+  min-height: 220px;
+  border-bottom: 1px solid #e5e7eb;
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mobilePanelHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.mobilePanelTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.mobileNav {
+  flex: 1;
+  padding: 1rem 0;
+  overflow-y: auto;
+}
+
+.mobileItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #374151;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms ease;
+  gap: 0.75rem;
+}
+
+.mobileItemActive {
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.05);
+  border-right: 3px solid #2563eb;
+}
+
+.mobileItem:hover {
+  background: #f3f4f6;
+  color: #2563eb;
+}
+
+.mobilePanelFooter {
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobileCloseButton {
+  width: 100%;
+  padding: 0.875rem;
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.mobileCloseButton:hover {
+  background: #e5e7eb;
+}
+
+.mobileOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Efecto de ripple para botones
+----------------------------------------------------------------------------- */
+.rippleEffect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.3);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   Menú de cliente: animación y estilos de items
+----------------------------------------------------------------------------- */
+.clientMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem;
+  min-width: 180px;
+  z-index: 20;
+  animation: scaleIn 0.2s ease;
+  transform-origin: top right;
+  border: 1px solid #e5e7eb;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.clientMenuItem {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 150ms ease;
+}
+
+.clientMenuItem:hover {
+  background: #f3f4f6;
+  color: #2563eb;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Responsive: ajustes para tablet y móvil
+----------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .searchForm {
+    width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .innerDesktop {
+    padding: 0 1rem;
+  }
+  
+  .brand {
+    font-size: 1.5rem;
+  }
+  
+  .searchForm {
+    width: 280px;
+  }
+  
+  .mobilePanel {
+    top: 72px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .searchForm {
+    display: none;
+  }
+  
+  .mobileSearchInput {
+    width: 220px;
+  }
+  
+  .mobilePanel {
+    top: 72px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 180px;
+  }
+}

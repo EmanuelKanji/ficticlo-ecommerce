@@ -1,0 +1,113 @@
+/* Estilos para el Header del admin, igual que Sidebar */
+
+/* Botón de menú, transparente y alineado */
+.menuButton {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Oculta el botón de menú en pantallas grandes */
+@media (min-width: 1024px) {
+  .menuButton {
+    display: none;
+  }
+}
+
+/* Header principal, barra superior fija y fondo oscuro */
+.header {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #1c1c1f;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  z-index: 40;
+  background: #1e293b;
+  color: #fff;
+}
+
+/* Header en pantallas pequeñas, menor altura y padding */
+@media (max-width: 768px) {
+  .header {
+    height: 56px;
+    font-size: 16px;
+    padding: 0 8px;
+  }
+}
+
+/* Contenedor de elementos a la izquierda */
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logo del admin, texto grande y blanco */
+.logo {
+  font-weight: 700;
+  font-size: 22px;
+  color: #fff;
+}
+
+/* Contenedor de acciones (botones, iconos) */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Menú de usuario, posición relativa para el dropdown */
+.userMenu {
+  position: relative;
+}
+
+/* Estilo del avatar, imagen circular */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+/* Estilos para el dropdown del menú */
+.menuDropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 200px;
+  z-index: 50;
+  background: inherit;
+  color: inherit;
+}
+
+/* Línea separadora en el menú dropdown */
+.menuDropdown hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 8px 0;
+}
+
+/* Estilo de los botones en el menú dropdown */
+.menuDropdown button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #1e293b;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px 0;
+}

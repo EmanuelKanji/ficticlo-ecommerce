@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+
+# Build output
+.next/
+dist/
+out/
+
+# Logs
+*.log
+
+# Env files
+.env
+.env.local
+.env.development
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Azure Functions
+api/local.settings.json
+api/.env
+
+# Frontend env
+app/.env
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VSCode
+.vscode/

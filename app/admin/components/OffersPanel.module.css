@@ -1,0 +1,186 @@
+/* OffersPanel.module.css
+   Estilo empresarial, colores y bordes como OrdersPanel */
+
+/* Panel principal de ofertas, fondo blanco y bordes redondeados */
+.panel {
+	background: #fff;
+	color: #222;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px #0001;
+	border: 1px solid #e5e7eb;
+	padding: 32px 24px;
+	margin-bottom: 32px;
+}
+
+/* Título del panel de ofertas, texto grande y destacado */
+.title {
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: #1e293b;
+	margin-bottom: 24px;
+}
+
+/* Contenedor de pestañas para filtrar ofertas */
+.tabs {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+/* Botón de pestaña, fondo oscuro y bordes redondeados arriba */
+.tabButton {
+	min-width: 120px;
+	font-weight: 500;
+	background: #1e293b;
+	color: #fff;
+	border: 1px solid #334155;
+	border-radius: 6px 6px 0 0;
+	padding: 8px 16px;
+	cursor: pointer;
+	transition: background 0.2s, color 0.2s;
+}
+
+/* Botón de pestaña activo, fondo claro y borde inferior */
+.tabButtonActive {
+	background: #fff;
+	color: #1e293b;
+	border-bottom: 2px solid #1e293b;
+	font-weight: 700;
+}
+
+/* Lista de ofertas, espacio inferior */
+.offersList {
+	margin-bottom: 24px;
+}
+
+/* Elemento individual de la lista de ofertas */
+.offerItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 0;
+	border-bottom: 1px solid #e5e7eb;
+}
+
+/* Último elemento sin borde inferior */
+.offerItem:last-child {
+	border-bottom: none;
+}
+
+/* Título de la oferta, texto destacado */
+.offerTitle {
+	font-weight: 500;
+	color: #1e293b;
+}
+
+/* Descuento de la oferta, texto en verde y destacado */
+.offerDiscount {
+	color: #2e7d32;
+	font-weight: 700;
+	margin-left: 12px;
+}
+
+/* Formulario para agregar o editar ofertas */
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin-top: 16px;
+}
+
+/* Fila del formulario, alinea elementos en el centro */
+.row {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+/* Selectores y campos de entrada, estilo uniforme */
+.select,
+.input {
+	min-width: 180px;
+	padding: 8px 12px;
+	border: 1px solid #e5e7eb;
+	border-radius: 6px;
+	font-size: 15px;
+}
+
+/* Lista de productos, diseño en cuadrícula */
+.productList {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 12px;
+}
+
+/* Botón de producto, borde y fondo personalizados */
+.productButton {
+	margin: 0;
+	padding: 6px 10px;
+	border: 1px solid #ccc;
+	background: #fff;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 15px;
+	transition: border 0.2s, background 0.2s;
+}
+
+/* Botón de producto seleccionado, borde y fondo destacados */
+.productButton.selected {
+	border: 2px solid #2e7d32;
+	background: #e8f5e9;
+}
+
+/* Producto seleccionado, texto destacado */
+.selectedProduct {
+	margin-bottom: 8px;
+	font-weight: 500;
+	color: #1e293b;
+}
+
+/* Campo de entrada para descuentos, estilo uniforme */
+.discountInput {
+	margin-top: 8px;
+	min-width: 120px;
+	padding: 8px 12px;
+	border: 1px solid #e5e7eb;
+	border-radius: 6px;
+	font-size: 15px;
+}
+
+/* Precio con descuento, texto en verde y negrita */
+.priceWithDiscount {
+	margin-top: 8px;
+	color: #2e7d32;
+	font-weight: bold;
+}
+
+/* Botón principal, fondo oscuro y texto blanco */
+.button {
+	background: #1e293b;
+	color: #fff;
+	border: none;
+	border-radius: 6px;
+	padding: 6px 14px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+/* Efecto hover para el botón principal */
+.button:hover {
+	background: #334155;
+}
+
+/* Mensajes de error, texto en rojo */
+.error {
+	color: #dc2626;
+	margin-top: 8px;
+}
+
+/* Mensajes de éxito, texto en verde */
+.success {
+	color: #2e7d32;
+	margin-top: 8px;
+}

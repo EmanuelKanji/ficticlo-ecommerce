@@ -1,0 +1,499 @@
+/* -----------------------------------------------------------------------------
+   Variables locales
+   -------------------------------------------------------------------------- */
+.grid {
+  --pg-grid-gap: 1.5rem;
+  --pg-card-bg: #ffffff;
+  --pg-card-border: #e5e7eb;
+  --pg-card-radius: 0.75rem;
+  --pg-card-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+  --pg-card-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.15);
+  --pg-card-shadow-active: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  --pg-text-primary: #111;
+  --pg-text-secondary: #222;
+  --pg-text-muted: #666;
+  
+  --pg-primary: #3b82f6;
+  --pg-primary-hover: #2563eb;
+  --pg-primary-active: #1d4ed8;
+  
+  --pg-ghost-bg: transparent;
+  --pg-ghost-border: #e5e7eb;
+  --pg-ghost-hover: #f9fafb;
+  --pg-ghost-active: #f3f4f6;
+  
+  --pg-spacing-xs: 0.25rem;
+  --pg-spacing-sm: 0.5rem;
+  --pg-spacing-md: 0.75rem;
+  --pg-spacing-lg: 1rem;
+  --pg-spacing-xl: 1.5rem;
+  
+  --pg-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --pg-transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* -----------------------------------------------------------------------------
+   Grid principal
+   -------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--pg-grid-gap);
+  padding: var(--pg-spacing-xl) 0;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Tarjeta de producto
+   -------------------------------------------------------------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--pg-card-bg);
+  border: 1px solid var(--pg-card-border);
+  border-radius: var(--pg-card-radius);
+  overflow: hidden;
+  box-shadow: var(--pg-card-shadow);
+  transition: var(--pg-transition-slow);
+  position: relative;
+  isolation: isolate;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--pg-card-shadow-hover);
+  border-color: var(--pg-primary);
+}
+
+.card:active {
+  transform: translateY(-1px);
+  box-shadow: var(--pg-card-shadow-active);
+}
+
+/* Efecto de brillo al hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--pg-primary), 
+    transparent);
+  opacity: 0;
+  transition: var(--pg-transition);
+  z-index: 2;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* -----------------------------------------------------------------------------
+   Contenedor de imagen
+   -------------------------------------------------------------------------- */
+.imgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+}
+
+.image {
+  object-fit: cover;
+  transition: var(--pg-transition-slow);
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+/* Overlay de imagen al hover */
+.imgWrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.1), transparent);
+  opacity: 0;
+  transition: var(--pg-transition);
+  pointer-events: none;
+}
+
+.card:hover .imgWrap::after {
+  opacity: 1;
+}
+
+/* -----------------------------------------------------------------------------
+   Cuerpo de la tarjeta
+   -------------------------------------------------------------------------- */
+.body {
+  padding: var(--pg-spacing-md);
+  text-align: center;
+  display: grid;
+  gap: var(--pg-spacing-sm);
+  flex: 1;
+}
+
+.title {
+  margin: var(--pg-spacing-xs) 0 0;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--pg-text-primary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.8rem;
+}
+
+.price {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--pg-text-secondary);
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* -----------------------------------------------------------------------------
+   Acciones - BOTONES ELEGANTES Y MINIMALISTAS
+   -------------------------------------------------------------------------- */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--pg-spacing-xs);
+  margin-top: var(--pg-spacing-md);
+}
+
+.detailsLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pg-spacing-xs) var(--pg-spacing-sm);
+  background: transparent;
+  color: var(--pg-text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  border-radius: var(--pg-card-radius);
+  border: 1px solid var(--pg-card-border);
+  transition: var(--pg-transition);
+  cursor: pointer;
+  min-height: 32px;
+  letter-spacing: 0.01em;
+}
+
+.detailsLink:hover {
+  background: var(--pg-ghost-hover);
+  border-color: var(--pg-primary);
+  color: var(--pg-primary);
+  transform: translateY(-1px);
+}
+
+.detailsLink:active {
+  background: var(--pg-ghost-active);
+  transform: translateY(0);
+}
+
+.addButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pg-spacing-xs) var(--pg-spacing-sm);
+  background: var(--pg-primary);
+  color: white;
+  border: none;
+  border-radius: var(--pg-card-radius);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  transition: var(--pg-transition);
+  cursor: pointer;
+  min-height: 32px;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.01em;
+}
+
+.addButton:hover {
+  background: var(--pg-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+.addButton:active {
+  background: var(--pg-primary-active);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.addButton:disabled {
+  background: var(--pg-text-muted);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Efecto de ripple sutil */
+.addButton::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 1%, transparent 1%) center/15000%;
+  opacity: 0;
+  transition: opacity 0.3s, background-size 0.3s;
+}
+
+.addButton:active::after {
+  background-size: 100%;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* -----------------------------------------------------------------------------
+   Estados de carga
+   -------------------------------------------------------------------------- */
+.addButton.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.addButton.loading::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* -----------------------------------------------------------------------------
+   Responsive Design
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--pg-spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--pg-spacing-md);
+    padding: var(--pg-spacing-lg) 0;
+  }
+  
+  .body {
+    padding: var(--pg-spacing-sm);
+  }
+  
+  .title {
+    font-size: 0.9rem;
+    min-height: 2.5rem;
+  }
+  
+  .price {
+    font-size: 1rem;
+  }
+  
+  .actions {
+    grid-template-columns: 1fr;
+    gap: var(--pg-spacing-xs);
+  }
+  
+  .detailsLink,
+  .addButton {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.5rem;
+    min-height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--pg-spacing-sm);
+  }
+  
+  .title {
+    font-size: 0.85rem;
+    min-height: 2.2rem;
+  }
+  
+  .price {
+    font-size: 0.9rem;
+  }
+  
+  .detailsLink,
+  .addButton {
+    font-size: 0.7rem;
+    min-height: 28px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Modo oscuro
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  .grid {
+    --pg-card-bg: #1f2937;
+    --pg-card-border: #374151;
+    --pg-text-primary: #f9fafb;
+    --pg-text-secondary: #e5e7eb;
+    --pg-text-muted: #9ca3af;
+    
+    --pg-ghost-bg: transparent;
+    --pg-ghost-border: #4b5563;
+    --pg-ghost-hover: #374151;
+    --pg-ghost-active: #4b5563;
+  }
+  
+  .imgWrap {
+    background: linear-gradient(135deg, #374151, #4b5563);
+  }
+  
+  .detailsLink {
+    color: #e5e7eb;
+    border-color: #4b5563;
+  }
+  
+  .detailsLink:hover {
+    color: var(--pg-primary);
+    border-color: var(--pg-primary);
+    background: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Mejoras de accesibilidad
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .grid,
+  .card,
+  .image,
+  .detailsLink,
+  .addButton {
+    animation: none;
+    transition: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+  
+  .card:hover .image {
+    transform: none;
+  }
+  
+  .addButton::after {
+    display: none;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Estados de focus mejorados
+   -------------------------------------------------------------------------- */
+.detailsLink:focus-visible,
+.addButton:focus-visible {
+  outline: 2px solid var(--pg-primary);
+  outline-offset: 2px;
+}
+
+.card:focus-within {
+  outline: 2px solid var(--pg-primary);
+  outline-offset: 2px;
+}
+
+/* -----------------------------------------------------------------------------
+   Soporte para navegadores antiguos
+   -------------------------------------------------------------------------- */
+@supports not (aspect-ratio: 1 / 1) {
+  .imgWrap {
+    height: 0;
+    padding-bottom: 100%;
+  }
+  
+  .imgWrap .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}
+
+@supports not (gap: 0.5rem) {
+  .grid {
+    gap: 0;
+    margin: -0.75rem;
+  }
+  
+  .grid > * {
+    margin: 0.75rem;
+  }
+  
+  .body {
+    gap: 0;
+  }
+  
+  .body > * {
+    margin-bottom: 0.5rem;
+  }
+  
+  .body > *:last-child {
+    margin-bottom: 0;
+  }
+  
+  .actions {
+    gap: 0;
+  }
+  
+  .actions > * {
+    margin-bottom: 0.5rem;
+  }
+  
+  .actions > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Mejoras de rendimiento
+   -------------------------------------------------------------------------- */
+.card {
+  contain: layout style paint;
+}
+
+.addButton {
+  will-change: transform, background, box-shadow;
+}
+
+.image {
+  will-change: transform;
+}

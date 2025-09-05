@@ -1,0 +1,89 @@
+/* Layout sin :root ni variables globales; valores explícitos */
+
+/* Evitar scrollbar de la página (reglas globales necesarias)
+   Aplica a la raíz del documento para ocultar el scroll y asegurar altura completa */
+.html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Contenedor principal del layout admin
+   Ocupa toda la altura de la ventana y oculta el scroll */
+.container {
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* SIDEBAR fijo a la izquierda
+   Define posición, tamaño y z-index del menú lateral */
+.sidebar {
+  position: fixed;
+  top: 64px; /* debajo del header */
+  left: 0;
+  width: 240px;
+  height: calc(100vh - 64px);
+  z-index: 30;
+  /* El resto de estilos visuales van en Sidebar.module.css */
+}
+
+/* Área principal (a la derecha del sidebar)
+   Define el espacio donde se muestra el contenido principal */
+.mainArea {
+  margin-left: 240px;
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #fff;
+  color: #222;
+}
+
+/* HEADER fijo (alto fijo)
+   Estilos para la barra superior del admin */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 64px;
+  background: #1e293b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  z-index: 40;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #334155;
+}
+
+/* CONTENIDO: ocupa espacio restante y hace scroll internamente
+   Área donde se muestra el contenido de cada página */
+.content {
+  padding: 16px;
+  box-sizing: border-box;
+  min-height: calc(100vh - 64px);
+  background: #f8fafc;
+  width: 100%;
+  overflow: auto;
+}
+
+/* Responsive simple
+   Oculta el sidebar y ajusta el área principal en pantallas pequeñas */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 0;
+        padding: 0;
+    }
+    .mainArea {
+        margin-left: 0;
+    }
+    .header {
+        left: 0;
+    }
+}

@@ -1,0 +1,122 @@
+
+/* Contenedor principal de la página de detalle de producto */
+.main {
+  padding: 2rem; /* Espaciado interno */
+  display: grid; /* Usamos grid para dividir imagen y detalles */
+  gap: 24px; /* Espacio entre columnas */
+  grid-template-columns: 1fr 1fr; /* Dos columnas: imagen y detalles */
+}
+
+
+/* Contenedor de la imagen principal */
+.imageWrapper {
+  position: relative; /* Permite overlays o posicionamiento absoluto */
+}
+
+
+/* Imagen del producto, responsiva y con bordes redondeados */
+.productImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /* Bordes redondeados */
+  object-fit: cover; /* Mantiene proporción y recorta si es necesario */
+}
+
+
+/* Título del producto */
+.title {
+  margin: 0 0 8px; /* Espacio inferior */
+}
+
+
+/* Precio destacado */
+.price {
+  font-size: 22px; /* Tamaño grande */
+  margin: 8px 0 12px; /* Espaciado vertical */
+}
+
+
+/* Descripción del producto */
+.description {
+  color: #555; /* Color gris para texto secundario */
+  margin-bottom: 16px;
+}
+
+
+/* Contenedor de tallas disponibles */
+.sizes {
+  display: flex;
+  gap: 8px; /* Espacio entre tallas */
+  flex-wrap: wrap; /* Permite que las tallas bajen a otra línea */
+  margin-bottom: 16px;
+}
+
+
+/* Estilo de cada talla individual */
+.size {
+  padding: 8px 10px;
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 10px; /* Bordes redondeados */
+  min-width: 42px; /* Ancho mínimo para uniformidad */
+  text-align: center;
+}
+
+
+/* Indicador de stock */
+.stock {
+  margin-bottom: 16px;
+  font-weight: 600; /* Negrita */
+}
+
+
+/* Color rojo para productos agotados */
+.stockAgotado {
+  color: #a00;
+}
+
+
+/* Color verde para productos disponibles */
+.stockDisponible {
+  color: #0a0;
+}
+
+
+/* Contenedor de botones de acción */
+.buttons {
+  display: flex;
+  gap: 10px; /* Espacio entre botones */
+}
+
+
+/* Separador visual entre secciones */
+.divider {
+  margin: 24px 0;
+  border: 0;
+  border-top: 1px solid #eee; /* Línea gris clara */
+}
+
+
+/* Lista de detalles adicionales del producto */
+.detailsList {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* Término y valor */
+  row-gap: 8px;
+}
+
+
+/* Estilo para los términos de la lista de detalles */
+.detailsTerm {
+  color: #666; /* Gris medio */
+}
+
+
+/* Media query para pantallas pequeñas (móviles/tablets) */
+@media (max-width: 800px) {
+  .main {
+    grid-template-columns: 1fr; /* Una sola columna */
+    padding: 1rem; /* Menos espacio */
+  }
+  .imageWrapper {
+    margin-bottom: 24px; /* Espacio debajo de la imagen */
+  }
+}
